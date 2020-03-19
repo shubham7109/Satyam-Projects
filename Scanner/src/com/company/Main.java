@@ -13,5 +13,6 @@ public class Main {
         System.out.println("You entered integer "+a);
         float b = in.nextFloat();
         System.out.println("You entered float "+b);
+        //TODO: You should always comment your code.
     }
 }
