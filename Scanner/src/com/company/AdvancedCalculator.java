@@ -3,55 +3,61 @@ package com.company;
 import java.util.Scanner;
 
 public class AdvancedCalculator {
+
     public static void main(String[] args) {
-        System.out.println("If you would like to: \n add enter 1 \n subtract enter 2 \n multiply enter 3 \n divide enter 4  ");
+        //TODO Required output:  10 - 5 = 5
+        //TODO : Use only 1 scanner object
+
+        int d= 0;
         Scanner in = new Scanner(System.in);
-        String d = in.nextLine();
+        do {
+            System.out.println("If you would like to: \n add enter 1 \n subtract enter 2 \n multiply enter 3 \n divide enter 4  ");
+            d = in.nextInt();
+        }while (d < 1 || d > 4);
+        // && = and
+        // || = or
+
         switch (d) {
-            case "1": {
+            case 1: {
                 System.out.println("Insert a number you would like to add");
-                Scanner ir = new Scanner(System.in);
-                int a = Integer.parseInt(in.nextLine());
+                int a = in.nextInt();
                 System.out.println("Insert another number");
-                Scanner ib = new Scanner(System.in);
-                int b = Integer.parseInt(ib.nextLine());
+                int b = in.nextInt();
                 int c = a + b;
                 System.out.println(" The required number is " + c);
+                System.out.println( a + " + " + b + " = " + c);
                 break;
             }
-            case "2": {
+            case 2: {
                 System.out.println("Insert a number you would like to subtract");
-                Scanner ir = new Scanner(System.in);
-                int a = Integer.parseInt(in.nextLine());
+                int a = in.nextInt();
                 System.out.println("Insert another number");
-                Scanner ib = new Scanner(System.in);
-                int b = Integer.parseInt(ib.nextLine());
+                int b = in.nextInt();
                 int c = a - b;
                 System.out.println(" The required number is " + c);
+                System.out.println( a + " - " + b + " = " + c);
                 break;
             }
-            case "3": {
+            case 3: {
                 System.out.println("Insert a number you would like to multiply");
-                Scanner ir = new Scanner(System.in);
-                int a = Integer.parseInt(in.nextLine());
+                int a = in.nextInt();
                 System.out.println("Insert another number");
-                Scanner ib = new Scanner(System.in);
-                int b = Integer.parseInt(ib.nextLine());
+                int b = in.nextInt();
                 int c = a * b;
                 System.out.println(" The required number is " + c);
+                System.out.println( a + " * " + b + " = " + c);
                 break;
             }
-            case "4": {
+            case 4: {
                 System.out.println("Insert a number you would like to add");
-                Scanner ir = new Scanner(System.in);
-                int a = Integer.parseInt(in.nextLine());
+                int a = in.nextInt();
                 System.out.println("Insert another number you would like to add");
-                Scanner ib = new Scanner(System.in);
-                int b = Integer.parseInt(ib.nextLine());
+                int b = in.nextInt();
                 int c = a / b;
                 System.out.println(" The required number is " + c);
-
+                System.out.println( a + " / " + b + " = " + c);
                 break;
+
             }
         }
 
