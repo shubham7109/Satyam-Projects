@@ -10,5 +10,7 @@ public class Main {
         Scanner in = new Scanner(System.in);
         String s = in.nextLine();
         System.out.println("Your Name is " + s);
+        
+
     }
 }
