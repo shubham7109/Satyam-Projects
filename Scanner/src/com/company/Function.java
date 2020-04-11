@@ -13,27 +13,27 @@ public class Function {
         // Write a code prints "Enter your name:" using a printQuestion() function
         // Enter your name using scanner using a getName() function. getName() function should return a String
         // Store the returned name in a String variable
-        // Print out: "Hello, NAME" using the variable in the main() function.
-        printQuestion ();
-        getName ();
+        // Print out: "Hello, NAME" using the variable in the helloMessage() function.
 
-
-
-        //Here is some starter code for the functions you will use below. Good luck!
+        
 
     }
 
+    private static void helloMessage() {
+        //TODO
+        // Print the hello message by retrieving the name as a parameter/argument
+    }
+
     static void printQuestion(){
-        //TODO, fill this in
-        System.out.println("Enter your name");
+        //TODO
+        // Print the question "Enter you name" that is it :)
 
     }
 
     static void getName(){
-        //TODO, fill this in
-        Scanner in = new Scanner(System.in);
-        String a = in.nextLine();
-        System.out.println("Hello, " + a);
+        //TODO
+        // This function should not print anything
+        // This function should get the name using scanner and then return the String back to main.
     }
 
 }
