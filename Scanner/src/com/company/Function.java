@@ -14,18 +14,26 @@ public class Function {
         // Enter your name using scanner using a getName() function. getName() function should return a String
         // Store the returned name in a String variable
         // Print out: "Hello, NAME" using the variable in the main() function.
+        printQuestion ();
+        getName ();
+
 
 
         //Here is some starter code for the functions you will use below. Good luck!
 
     }
 
-    void printQuestion(){
+    static void printQuestion(){
         //TODO, fill this in
+        System.out.println("Enter your name");
+
     }
 
-    void getName(){
+    static void getName(){
         //TODO, fill this in
+        Scanner in = new Scanner(System.in);
+        String a = in.nextLine();
+        System.out.println("Hello, " + a);
     }
 
 }

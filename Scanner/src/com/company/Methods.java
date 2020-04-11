@@ -16,7 +16,6 @@ public class Methods {
         System.out.println("You will be unlucky");
     }
 
-}
 
     public static void main(String[] args) {
         System.out.println("Choose a number between 0 and 4");
@@ -26,8 +25,10 @@ public class Methods {
         switch (answer) {
            case (1):
                 myMethod1();
+                break;
            case (2):
                 myMethod2();
+                break;
            case (3):
                 myMethod3();
                 break;
