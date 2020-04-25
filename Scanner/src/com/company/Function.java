@@ -17,16 +17,16 @@ public class Function {
         // Print out: "Hello, NAME" using the variable in the helloMessage() function.
 
         printQuestion();
-        getName();
-        helloMessage();
+        String name = getName();
+        helloMessage(name);
 
 
     }
 
-    private static void helloMessage() {
+    static void helloMessage(String name) {
         //TODO
         // Print the hello message by retrieving the name as a parameter/argument
-        System.out.println("Hello, " + a);
+        System.out.println("Hello, " + name);
     }
 
     static void printQuestion(){
@@ -37,12 +37,13 @@ public class Function {
 
     }
 
-    static void getName(){
+    static String getName(){
         //TODO
         // This function should not print anything
         // This function should get the name using scanner and then return the String back to main.
         Scanner in = new Scanner(System.in);
         String a = in.next();
+        return a;
     }
 
 }
