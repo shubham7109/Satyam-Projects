@@ -1,5 +1,4 @@
 package com.company;
-import javax.swing.table.TableRowSorter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -14,10 +13,13 @@ public class ErrorCalc {
             System.out.println("Enter value of " + i + " observation");
             errors.add(in.nextFloat());
         }
-        System.out.println(errors);
-        System.out.println(errorCalculation(errors,mean(errors)));
-        System.out.println(absoluteError(errorCalculation(errors,mean(errors))));
-        System.out.println(relativeError(absoluteError(errorCalculation(errors,mean(errors))), mean(errors)));
+        System.out.println("True value is "+ errors);
+        System.out.println("Absolute errors are "+errorCalculation(errors,mean(errors)));
+        System.out.println("Mean absolute error is "+ (absoluteError(errorCalculation(errors,mean(errors)))));
+        System.out.println("Relative error is "+relativeError(absoluteError(errorCalculation(errors,mean(errors))), mean(errors)));
+        float percentageError = Math.abs(relativeError(absoluteError(errorCalculation(errors,mean(errors))), mean(errors)) * 100);
+        System.out.println("The result is (percentage error)" + mean(errors) + " +/- " + percentageError);
+        System.out.println("The result is " + mean(errors) + " +/- " + absoluteError(errorCalculation(errors,mean(errors))));
         }
     public static float mean(ArrayList<Float> errors){
         float sum = 0;
@@ -29,7 +31,7 @@ public class ErrorCalc {
     public static ArrayList<Float> errorCalculation(ArrayList<Float> errors, float mean) {
         ArrayList<Float> errorCalculation = new ArrayList<>();
         for (Float error : errors)
-            errorCalculation.add(mean - error);
+            errorCalculation.add(Math.abs((mean) - (error)));
         return errorCalculation;
     }
     public static float absoluteError(ArrayList<Float> errorCalculation){
