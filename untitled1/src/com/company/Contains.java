@@ -22,8 +22,9 @@ public class Contains {
     private static ArrayList<Integer> removeDuplicates(ArrayList<Integer> numbers){
         ArrayList<Integer> noDuplicates = new ArrayList<>();
         for (Integer number : numbers) {
-            if (noDuplicates.contains(number)) {
-            } else noDuplicates.add(number);
+            if (!noDuplicates.contains(number)) {
+                noDuplicates.add(number);
+            }
         }
         //TODO Fill this method
         // Hint: use ArrayList.contains() somewhere
