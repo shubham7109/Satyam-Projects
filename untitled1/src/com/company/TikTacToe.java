@@ -1,9 +1,4 @@
 package com.company;
-
-
-import org.w3c.dom.ls.LSOutput;
-
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class TikTacToe {
@@ -28,31 +23,26 @@ public class TikTacToe {
          */
         private void playGame(){
             createBoard();
-            printBoard();
 
             while (true){
-                if((!checkIfPlayerAWon() || !checkIfDraw())){
+                if((!checkIfPlayerBWon() && !checkIfDraw())){
                     playerATurn();
                     printBoard();
-                    checkIfPlayerAWon();
-
                 }
                 else
                 {
                     break;
                 }
 
-                if((!checkIfPlayerBWon() || !checkIfDraw())){
+                if((!checkIfPlayerAWon()  && !checkIfDraw())){
                     playerBTurn();
                     printBoard();
-                    checkIfPlayerBWon();
-
                 }
                 else
                 {
                     break;
                 }
-                printBoard();
+
             }
 
             if(checkIfPlayerBWon()){
@@ -75,14 +65,17 @@ public class TikTacToe {
          */
         private void playerATurn(){
             //TODO
-            System.out.println(" Player A enter the column number of where you'd like to play from");
+            System.out.print("Player A enter the column number of where you'd like to play from : ");
             Scanner in = new Scanner(System.in);
             int y = in.nextInt();
-            System.out.println("Player A enter the row number of where you'd like to play from");
+            System.out.print("Player A enter the row number of where you'd like to play from : ");
             int x = in.nextInt();
-            if (isPositionEmpty(x,y)) {
-                board [x][y] = "X" ;
-            } else System.out.println(" Position not empty choose again");
+            if (isPositionEmpty(x, y)) {
+                board[x][y] = " X ";
+            } else {
+                System.out.println("Position has been taken, Try again");
+                playerATurn();
+            }
 
         }
 
@@ -93,14 +86,17 @@ public class TikTacToe {
          */
         private void playerBTurn(){
             //TODO
-            System.out.println("Player B enter the column number of where you'd like to play from");
+            System.out.print("Player B enter the column number of where you'd like to play from : ");
             Scanner in = new Scanner(System.in);
             int y = in.nextInt();
-            System.out.println("Player B enter the row number of where you'd like to play from");
+            System.out.print("Player B enter the row number of where you'd like to play from : ");
             int x = in.nextInt();
             if (isPositionEmpty(x, y)) {
-                board [x][y] = "O";
-            } else System.out.println(" Position not empty choose again");
+                board [x][y] = " O ";
+            }   else {
+                System.out.println("Position has been taken, Try again");
+                playerBTurn();
+            }
         }
 
         /**
@@ -113,53 +109,86 @@ public class TikTacToe {
          */
         private boolean isPositionEmpty(int x, int y){
             //TODO
-            if (board [x][y] == "-") {
-                return true;
-            } else {
-                return false;
-            }
+            return board[x][y].equals(" - ");
         }
 
         /**
          * Check all rows, columns and diagonals for X's
          * @return True if player A gets 3 X's in a row
          */
-        private boolean checkIfPlayerAWon(){
-            //TODO
-            if (board [0][0]== "X" && board [1][0] == "X" && board [2][0] == "X" || board [0][1]== "X" && board [1][1]== "X" & board [2][1]== "X" || board [0][2]== "X" && board [1][2]== "X" && board [2][2]== "X" || board [0][0]== "X" && board [1][1]== "X" && board [2][2]== "X" || board [2][0]== "X" && board [1][1]== "X" && board [0][3]== "X"){
-                return true;
-            } else
-            return false;
+        private boolean checkIfPlayerAWon() {
+              for (int i = 0; i < 3; i++) {
+
+                      if (board[i][0].equals(" X ") &&
+                         board[i][1].equals(" X ") &&      //for checking rows
+                         board[i][2].equals(" X ")) {
+                          return true;
+                      } else if
+                          (board[0][i].equals(" X ") &&
+                          board[1][i].equals(" X ") &&     //for checking columns
+                          board[2][i].equals(" X ")) {
+                              return true;
+                      } else if
+                          (board[0][0].equals(" X ") &&
+                          board[1][1].equals(" X ") &&     // Diagonals
+                          board[2][2].equals(" X ")) {
+                              return true;
+                      }else if
+                          (board[0][2].equals(" X ") &&
+                          board[1][1].equals(" X ") &&
+                          board[2][0].equals(" X "))
+                        return true;
+              } return false;
+
         }
         /**
          * Check all rows, columns and diagonals for O's
          * @return True if player A gets 3 O's in a row
          */
-        private boolean checkIfPlayerBWon(){
+        private boolean checkIfPlayerBWon() {
             //TODO
-            if (board [0][0]== "O" && board [1][0] == "O" && board [2][0] == "O" || board [0][1]== "O" && board [1][1]== "O" & board [2][1]== "O" || board [0][2]== "O" && board [1][2]== "O" && board [2][2]== "O" || board [0][0]== "O" && board [1][1]== "O" && board [2][2]== "O" || board [2][0]== "O" && board [1][1]== "O" && board [0][3]== "O") {
-                return true;
-            } else
-            return false;
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++) {
+                    if (board[i][0].equals(" O ") &&
+                        board[i][1].equals(" O ") &&      //for checking rows
+                        board[i][2].equals(" O ")) {
+                        return true;
+                    } else if
+                    (board[0][j].equals(" O ") &&
+                    board[1][j].equals(" O ") &&     //for checking columns
+                    board[2][j].equals(" O ")) {
+                        return true;
+                } else if
+                 (board[0][0].equals(" O ") &&
+                 board[1][1].equals(" O ") &&                      // Diagonals
+                 board[2][2].equals(" O ")) {
+                        return true;
+                 }else if
+                  (board[0][2].equals(" O ") &&
+                  board[1][1].equals(" O ") &&
+                  board[2][0].equals(" O "))
+                  return true;
+                }
+            } return false;
         }
 
-        /**
+
+        /**         board[2][1].equals(" O ");
          * Check if there is NO empty spot
          * AND checkIfPlayerAWon() and checkIfPlayerBWon() returns false.
          * @return True if the board is a draw, false if not.
          */
         private boolean checkIfDraw() {
             //TODO
-            for (int i = 0; i < 2 ; i ++) {
-                for (int j = 0; j < 2 ; j ++) {
-                    if ( board [i][j] != "-") {
-                        if (checkIfPlayerAWon() && checkIfPlayerBWon() == false) {
-                            return  true;
-                        }
+            for (int i = 0; i < 3 ; i ++) {
+                for (int j = 0; j < 3 ; j ++) {
+                    if (board[i][j].equals(" - ")) {
+                        return false;
                     }
                 }
             }
-            return false;
+            return !checkIfPlayerAWon() && !checkIfPlayerBWon();
+
         }
 
         /**
@@ -175,7 +204,9 @@ public class TikTacToe {
             for (int i = 0; i < 3; i++) {
                 for (int j = 0; j < 3; j++){
                     board [i][j] = " - " ;
+                    System.out.print(board[i][j]);
                 }
+                System.out.println();
             }
         }
 
@@ -188,7 +219,12 @@ public class TikTacToe {
          */
         private void printBoard(){
             //TODO
-            System.out.println(Arrays.deepToString(board));
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++){
+                    System.out.print(board[i][j]);
+                }
+                System.out.println();
+            }
         }
     }
 
