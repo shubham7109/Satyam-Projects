@@ -24,6 +24,7 @@ public class Contains {
         for (Integer number : numbers) {
             if (!noDuplicates.contains(number)) {
                 noDuplicates.add(number);
+                noDuplicates.add(1);
             }
         }
         //TODO Fill this method

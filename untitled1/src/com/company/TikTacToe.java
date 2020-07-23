@@ -1,26 +1,29 @@
 package com.company;
 import java.util.Scanner;
 
+/**
+ * TikTacToe ....
+ * @author Satyam Sharma
+ */
+
 public class TikTacToe {
 
         //NOTE: This might be helpful
         //https://www.geeksforgeeks.org/multidimensional-arrays-in-java/
-
         //This is a 2-dimensional array used to represent the 2D board layout.
+
         private String[][] board = new String[3][3];
-
-
 
         public static void main(String[] args) {
             TikTacToe tikTacToe = new TikTacToe();
             tikTacToe.playGame();
-
         }
 
         /**
          * This method will simulate a TikTacToe game.
          * You do NOT need to edit this.
          */
+
         private void playGame(){
             createBoard();
 
@@ -33,7 +36,6 @@ public class TikTacToe {
                 {
                     break;
                 }
-
                 if((!checkIfPlayerAWon()  && !checkIfDraw())){
                     playerBTurn();
                     printBoard();
@@ -42,7 +44,6 @@ public class TikTacToe {
                 {
                     break;
                 }
-
             }
 
             if(checkIfPlayerBWon()){
@@ -52,10 +53,8 @@ public class TikTacToe {
                 System.out.println("Player A wins!");
             }
             else if(checkIfDraw()){
-                System.out.println("This game is draw!");
+                System.out.println("This game is a draw!");
             }
-
-
         }
 
         /**
@@ -63,8 +62,8 @@ public class TikTacToe {
          * Get the X,Y position from the player and then
          * update the X,Y in board[X][Y] as 'X'
          */
+
         private void playerATurn(){
-            //TODO
             System.out.print("Player A enter the column number of where you'd like to play from : ");
             Scanner in = new Scanner(System.in);
             int y = in.nextInt();
@@ -76,7 +75,6 @@ public class TikTacToe {
                 System.out.println("Position has been taken, Try again");
                 playerATurn();
             }
-
         }
 
         /**
@@ -85,7 +83,6 @@ public class TikTacToe {
          * update the X,Y in board[X][Y] as 'O'
          */
         private void playerBTurn(){
-            //TODO
             System.out.print("Player B enter the column number of where you'd like to play from : ");
             Scanner in = new Scanner(System.in);
             int y = in.nextInt();
@@ -107,8 +104,8 @@ public class TikTacToe {
          * @param y Y position of the array
          * @return True if empty, false if not.
          */
+
         private boolean isPositionEmpty(int x, int y){
-            //TODO
             return board[x][y].equals(" - ");
         }
 
@@ -116,9 +113,9 @@ public class TikTacToe {
          * Check all rows, columns and diagonals for X's
          * @return True if player A gets 3 X's in a row
          */
+
         private boolean checkIfPlayerAWon() {
               for (int i = 0; i < 3; i++) {
-
                       if (board[i][0].equals(" X ") &&
                          board[i][1].equals(" X ") &&      //for checking rows
                          board[i][2].equals(" X ")) {
@@ -139,14 +136,14 @@ public class TikTacToe {
                           board[2][0].equals(" X "))
                         return true;
               } return false;
-
         }
+
         /**
          * Check all rows, columns and diagonals for O's
          * @return True if player A gets 3 O's in a row
          */
+
         private boolean checkIfPlayerBWon() {
-            //TODO
             for (int i = 0; i < 3; i++) {
                 for (int j = 0; j < 3; j++) {
                     if (board[i][0].equals(" O ") &&
@@ -154,41 +151,37 @@ public class TikTacToe {
                         board[i][2].equals(" O ")) {
                         return true;
                     } else if
-                    (board[0][j].equals(" O ") &&
-                    board[1][j].equals(" O ") &&     //for checking columns
-                    board[2][j].equals(" O ")) {
+                        (board[0][j].equals(" O ") &&
+                        board[1][j].equals(" O ") &&     //for checking columns
+                        board[2][j].equals(" O ")) {
                         return true;
-                } else if
-                 (board[0][0].equals(" O ") &&
-                 board[1][1].equals(" O ") &&                      // Diagonals
-                 board[2][2].equals(" O ")) {
+                    } else if
+                        (board[0][0].equals(" O ") &&
+                         board[1][1].equals(" O ") &&                      // Diagonals
+                        board[2][2].equals(" O ")) {
                         return true;
-                 }else if
-                  (board[0][2].equals(" O ") &&
-                  board[1][1].equals(" O ") &&
-                  board[2][0].equals(" O "))
-                  return true;
+                    }else if
+                        (board[0][2].equals(" O ") &&
+                        board[1][1].equals(" O ") &&
+                        board[2][0].equals(" O "))
+                        return true;
                 }
             } return false;
         }
-
 
         /**         board[2][1].equals(" O ");
          * Check if there is NO empty spot
          * AND checkIfPlayerAWon() and checkIfPlayerBWon() returns false.
          * @return True if the board is a draw, false if not.
          */
+
         private boolean checkIfDraw() {
-            //TODO
             for (int i = 0; i < 3 ; i ++) {
                 for (int j = 0; j < 3 ; j ++) {
-                    if (board[i][j].equals(" - ")) {
-                        return false;
-                    }
+                    if (board[i][j].equals(" - ")) return false;
                 }
             }
             return !checkIfPlayerAWon() && !checkIfPlayerBWon();
-
         }
 
         /**
@@ -199,8 +192,8 @@ public class TikTacToe {
          * [- - -]
          * [- - -]
          */
+
         private void createBoard(){
-            //TODO
             for (int i = 0; i < 3; i++) {
                 for (int j = 0; j < 3; j++){
                     board [i][j] = " - " ;
@@ -217,8 +210,8 @@ public class TikTacToe {
          * [- X O]
          * [O - X]
          */
+
         private void printBoard(){
-            //TODO
             for (int i = 0; i < 3; i++) {
                 for (int j = 0; j < 3; j++){
                     System.out.print(board[i][j]);
