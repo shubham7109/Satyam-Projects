@@ -8,14 +8,16 @@ public class WeatherModel {
     private int feelsLike;
     private String weatherDescription;
     private String windDescription;
+    private String humidity;
 
-    public WeatherModel(String locationName, String iconID, int temperature, int feelsLike, String weatherDescription, String windDescription) {
+    public WeatherModel(String locationName, String iconID, int temperature, int feelsLike, String weatherDescription, String windDescription, String humidity) {
         this.locationName = locationName;
         this.iconID = iconID;
         this.temperature = temperature;
         this.feelsLike = feelsLike;
         this.weatherDescription = weatherDescription;
         this.windDescription = windDescription;
+        this.humidity = humidity;
     }
 
     public String getLocationName() {
@@ -40,5 +42,9 @@ public class WeatherModel {
 
     public String getWindDescription() {
         return windDescription;
+    }
+
+    public String getHumidity() {
+        return humidity;
     }
 }

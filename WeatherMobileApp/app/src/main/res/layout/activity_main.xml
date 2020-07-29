@@ -67,7 +67,7 @@
             android:fontFamily="sans-serif-light"
             android:text="Feel Like: 42 C"
             android:textColor="@color/white"
-            android:textSize="25sp"
+            android:textSize="30sp"
             tools:ignore="HardcodedText" />
 
         <View
@@ -82,9 +82,22 @@
             android:fontFamily="sans-serif-light"
             android:text="Broken clouds"
             android:textColor="@color/white"
-            android:textSize="20sp"
+            android:textSize="25sp"
             tools:ignore="HardcodedText" />
 
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="20dp" />
+        <TextView
+            android:id="@+id/humidity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="sans-serif-light"
+            android:text="Humidity : "
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            tools:ignore="HardcodedText" />
 
         <View
             android:layout_width="wrap_content"
@@ -99,7 +112,7 @@
             android:gravity="center"
             android:text="Wind speed 3km/hr and in the South west direction"
             android:textColor="@color/white"
-            android:textSize="17sp"
+            android:textSize="20sp"
             tools:ignore="HardcodedText" />
 
 

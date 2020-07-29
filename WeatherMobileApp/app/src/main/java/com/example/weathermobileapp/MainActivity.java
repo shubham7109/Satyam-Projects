@@ -2,6 +2,7 @@ package com.example.weathermobileapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -71,7 +72,8 @@ public class MainActivity extends AppCompatActivity {
         String weatherDescription = responseObject.getJSONArray("weather").getJSONObject(0).getString("description");
         int feelsLike = (int) ((responseObject.getJSONObject("main").getDouble("feels_like")) - 273.25);
         String windDescription = "The wind speed and direction in degree is " + Math.round((responseObject.getJSONObject("wind").getDouble("speed"))*3.6) + " (Km/h) from the " + directionConverter(responseObject.getJSONObject("wind").getInt("deg"));
-        return new WeatherModel(locationName, iconID, temperature, feelsLike, weatherDescription, windDescription);
+        String humidity = responseObject.getJSONObject("main").getString("humidity");
+        return new WeatherModel(locationName, iconID, temperature, feelsLike, weatherDescription, windDescription, humidity);
     }
 
     public String directionConverter(int directionDegree) {
@@ -101,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
      * Set up the TextViews using the weatherModel object.
      * @param response JSON response from API call.
      */
+    @SuppressLint("SetTextI18n")
     private void setUpViews(JSONObject response) throws JSONException {
         WeatherModel weatherModel = getWeatherModel(response);
         //TODO: Use weatherModel to set up the TextViews...
@@ -110,13 +113,15 @@ public class MainActivity extends AppCompatActivity {
         //Now do the rest ...
         setIcon(weatherModel.getIconID());
         TextView temperature = findViewById(R.id.temperature);
-        temperature.setText(weatherModel.getTemperature());
+        temperature.setText( "Temp : "+ weatherModel.getTemperature() + "C");
         TextView feelsLike = findViewById(R.id.feels_like);
-        feelsLike.setText(weatherModel.getFeelsLike());
+        feelsLike.setText("Feels Like : "+ weatherModel.getFeelsLike() + "C");
         TextView weatherDescription = findViewById(R.id.description);
-        weatherDescription.setText(weatherModel.getWeatherDescription());
+        weatherDescription.setText("Description : " + weatherModel.getWeatherDescription());
         TextView windDescription = findViewById(R.id.wind);
         windDescription.setText(weatherModel.getWindDescription());
+        TextView humidity = findViewById(R.id.humidity);
+        humidity.setText("Humidity : " + weatherModel.getHumidity());
     }
 
     /**
