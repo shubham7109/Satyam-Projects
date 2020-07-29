@@ -20,82 +20,87 @@
 
         <TextView
             android:id="@+id/location"
-            android:text="Dubai"
-            android:textSize="50sp"
-            android:fontFamily="sans-serif-light"
-            android:textColor="@color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:fontFamily="sans-serif-light"
+            android:text="Dubai"
+            android:textColor="@color/white"
+            android:textSize="50sp"
+            tools:ignore="HardcodedText" />
 
         <View
             android:layout_width="wrap_content"
-            android:layout_height="20dp"/>
+            android:layout_height="20dp" />
 
         <ImageView
             android:id="@+id/weather_icon"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            tools:ignore="ContentDescription" />
 
         <View
             android:layout_width="wrap_content"
-            android:layout_height="20dp"/>
+            android:layout_height="20dp" />
 
         <TextView
             android:id="@+id/temperature"
-            android:text="Temp: 42 C"
-            android:textSize="30sp"
-            android:fontFamily="sans-serif-light"
-            android:textColor="@color/white"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"/>
-
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"/>
-
-        <TextView
-            android:id="@+id/feels_like"
-            android:text="Feel Like: 42 C"
-            android:textSize="25sp"
-            android:fontFamily="sans-serif-light"
-            android:textColor="@color/white"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"/>
-
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"/>
-
-        <TextView
-            android:id="@+id/description"
-            android:text="Broken clouds"
-            android:textSize="20sp"
-            android:fontFamily="sans-serif-light"
-            android:textColor="@color/white"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"/>
-
-
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="20dp"/>
-
-        <TextView
-            android:id="@+id/wind"
-            android:text="Wind speed 3km/hr and in the South west direction"
-            android:textSize="17sp"
-            android:fontFamily="sans-serif-light"
-            android:textColor="@color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:gravity="center"/>
+            android:fontFamily="sans-serif-light"
+            android:text="Temp: 42 C"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            tools:ignore="HardcodedText" />
 
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="40dp" />
+
+        <TextView
+            android:id="@+id/feels_like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="sans-serif-light"
+            android:text="Feel Like: 42 C"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            tools:ignore="HardcodedText" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="40dp" />
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="sans-serif-light"
+            android:text="Broken clouds"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            tools:ignore="HardcodedText" />
+
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="20dp" />
+
+        <TextView
+            android:id="@+id/wind"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="sans-serif-light"
+            android:gravity="center"
+            android:text="Wind speed 3km/hr and in the South west direction"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            tools:ignore="HardcodedText" />
 
 
     </LinearLayout>
