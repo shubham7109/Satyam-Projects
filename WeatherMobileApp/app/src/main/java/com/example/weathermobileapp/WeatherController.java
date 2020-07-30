@@ -59,7 +59,9 @@ public class WeatherController {
         int feelsLike = (int) ((responseObject.getJSONObject("main").getDouble("feels_like")) - 273.25);
         String windDescription = "The wind speed and direction in degree is " + Math.round((responseObject.getJSONObject("wind").getDouble("speed"))*3.6) + " (Km/h) from the " + directionConverter(responseObject.getJSONObject("wind").getInt("deg"));
         String humidity = responseObject.getJSONObject("main").getString("humidity");
-        return new WeatherModel(locationName, iconID, temperature, feelsLike, weatherDescription, windDescription, humidity);
+        int tempMin = (int) ((responseObject.getJSONObject("main").getInt("temp_min")) - 273.15);
+        int tempMax = (int) ((responseObject.getJSONObject("main").getInt("temp_max")) - 273.15);
+        return new WeatherModel(locationName, iconID, temperature, feelsLike, weatherDescription, windDescription, humidity, tempMin, tempMax);
     }
 
     private static String directionConverter(int directionDegree) {

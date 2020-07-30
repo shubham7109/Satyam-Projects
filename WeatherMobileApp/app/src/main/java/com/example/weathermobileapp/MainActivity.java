@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         callAPI();
     }
 
@@ -67,13 +66,15 @@ public class MainActivity extends AppCompatActivity {
         //TODO
         JSONObject responseObject = new JSONObject(String.valueOf(response));
         String locationName = responseObject.getString("name");
-        String iconID = responseObject.getJSONArray("weather").getJSONObject(0).getString("id");
+        String iconID = responseObject.getJSONArray("weather").getJSONObject(0).getString("icon");
         int temperature = (int) ((responseObject.getJSONObject("main").getInt("temp")) - 273.15);
         String weatherDescription = responseObject.getJSONArray("weather").getJSONObject(0).getString("description");
         int feelsLike = (int) ((responseObject.getJSONObject("main").getDouble("feels_like")) - 273.25);
         String windDescription = "The wind speed and direction in degree is " + Math.round((responseObject.getJSONObject("wind").getDouble("speed"))*3.6) + " (Km/h) from the " + directionConverter(responseObject.getJSONObject("wind").getInt("deg"));
         String humidity = responseObject.getJSONObject("main").getString("humidity");
-        return new WeatherModel(locationName, iconID, temperature, feelsLike, weatherDescription, windDescription, humidity);
+        int tempMin = (int) ((responseObject.getJSONObject("main").getInt("temp_min")) - 273.15);
+        int tempMax = (int) ((responseObject.getJSONObject("main").getInt("temp_max")) - 273.15);
+        return new WeatherModel(locationName, iconID, temperature, feelsLike, weatherDescription, windDescription, humidity, tempMin, tempMax);
     }
 
     public String directionConverter(int directionDegree) {

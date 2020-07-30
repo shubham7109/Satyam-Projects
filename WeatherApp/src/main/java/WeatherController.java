@@ -1,6 +1,8 @@
 import java.util.*;
 import java.io.*;
 import java.net.*;
+
+
 import org.json.JSONObject;
 
 public class WeatherController {
@@ -16,7 +18,9 @@ public class WeatherController {
         System.out.println("The current temperature in (f) " + Math.round((1.8 * (weatherModel.getTemperature() - 273.15) + 32)));
         int directionDegree = weatherModel.getWindDirection();
         System.out.println("The wind speed and direction in degree is " + Math.round((weatherModel.getWindSpeed()*3.6)) + " (Km/h) from the " + weatherController.directionConverter(directionDegree));
+
     }
+
 
     //TODO: Step 1
     /**
