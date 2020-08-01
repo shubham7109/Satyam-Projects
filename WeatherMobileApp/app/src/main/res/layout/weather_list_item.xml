@@ -1,125 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@color/white"
     tools:context=".MainActivity">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:layout_marginStart="20dp"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="20dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <!--TODO: Design the item layout here.-->
         <TextView
             android:id="@+id/location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_gravity="center"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="301dp"
-            android:layout_marginBottom="655dp"
+            android:layout_gravity="left"
+            android:fontFamily="sans-serif-light"
             android:text="Dubai"
+            android:textColor="@color/black"
             android:textSize="30sp"
-            tools:ignore="HardcodedText" />
+            tools:ignore="HardcodedText,RtlHardcoded" />
 
         <TextView
             android:id="@+id/temperature"
             android:layout_width="wrap_content"
-            android:layout_height="78dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_gravity="center"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="62dp"
-            android:layout_marginEnd="309dp"
-            android:layout_marginBottom="591dp"
-            android:text="32"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:fontFamily="sans-serif-light"
+            android:text="32\u00BAC"
+            android:textColor="@color/black"
             android:textSize="50sp"
             android:textStyle="bold"
-            tools:ignore="HardcodedText" />
+            tools:ignore="HardcodedText,RtlHardcoded" />
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:fontFamily="sans-serif-light"
+            android:text="Clear"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText,RtlHardcoded" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="UseCompoundDrawables">
 
         <ImageView
             android:id="@+id/weather_icon"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentBottom="true"
             android:layout_gravity="center"
-            android:layout_marginStart="324dp"
-            android:layout_marginTop="43dp"
-            android:layout_marginEnd="-294dp"
-            android:layout_marginBottom="588dp"
-            android:layout_toStartOf="@+id/temperature"
             tools:ignore="ContentDescription" />
-
-        <TextView
-            android:id="@+id/description"
-            android:layout_width="wrap_content"
-            android:layout_height="78dp"
-            android:layout_below="@id/temperature"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_gravity="center"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="127dp"
-            android:layout_marginEnd="309dp"
-            android:layout_marginBottom="526dp"
-            android:text="Clear"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            tools:ignore="HardcodedText" />
-
         <TextView
             android:id="@+id/minMax"
-            android:layout_width="145dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_centerVertical="true"
-            android:layout_gravity="center"
-            android:layout_marginStart="240dp"
-            android:layout_marginTop="158dp"
-            android:layout_marginEnd="26dp"
-            android:layout_marginRight="26dp"
-            android:layout_marginBottom="518dp"
-            android:text="28\u00BAC / 34\u00BAC"
-            android:textSize="25sp"
-            tools:ignore="HardcodedText,RtlHardcoded" />
-        <TextView
-            android:id="@+id/windDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_gravity="center"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="301dp"
-            android:layout_marginBottom="655dp"
-            android:text=""
-            android:textSize="30sp"
-            tools:ignore="HardcodedText" />
+            android:layout_gravity="left"
+            android:fontFamily="sans-serif-light"
+            android:text="28\u00BAC/34\u00BAC"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            tools:ignore="HardcodedText,RtlHardcoded" />
 
-    </RelativeLayout>
-
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

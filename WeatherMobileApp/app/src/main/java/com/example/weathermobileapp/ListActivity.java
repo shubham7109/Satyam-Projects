@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 /**
@@ -32,14 +33,14 @@ public class ListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
         askUserLocation(ListActivity.this);
-        ListActivity listActivity = new ListActivity();
+
 
 
     }
 
 
-    private void setUpAPI(String location){
-        WeatherController.makeAPICall(this, "Dubai", new WeatherController.WeatherCallback() {
+    private void setUpAPI(final String location){
+        WeatherController.makeAPICall(this, location , new WeatherController.WeatherCallback() {
             @Override
             public void onResponse(WeatherModel responseModel) {
                 weatherModel = responseModel;
@@ -73,6 +74,7 @@ public class ListActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         String location = String.valueOf(taskEditText.getText());
+                        setUpAPI(location);
                     }
                 })
                 .setNegativeButton("Cancel", null)
