@@ -98,6 +98,8 @@ public class ListActivity extends AppCompatActivity {
         weatherDescription.setText(weatherModel.getWeatherDescription());
         TextView minMax = findViewById(R.id.minMax);
         minMax.setText(weatherModel.getTempMin() + "\u00BAC /" + weatherModel.getTempMax() + "\u00BAC");
+        TextView windDescription = findViewById(R.id.windDescription);
+        windDescription.setText(weatherModel.getWindDescription());
 
     }
 
