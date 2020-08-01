@@ -92,10 +92,10 @@ public class ListActivity extends AppCompatActivity {
         TextView location = findViewById(R.id.location);
         location.setText(weatherModel.getLocationName());
         TextView temperature = findViewById(R.id.temperature);
-        temperature.setText( "Temp : "+ weatherModel.getTemperature() + "C");
+        temperature.setText(weatherModel.getTemperature() + "\u00BAC");
         setIcon(weatherModel.getIconID());
         TextView weatherDescription = findViewById(R.id.description);
-        weatherDescription.setText("Description : " + weatherModel.getWeatherDescription());
+        weatherDescription.setText(weatherModel.getWeatherDescription());
         TextView minMax = findViewById(R.id.minMax);
         minMax.setText(weatherModel.getTempMin() + "\u00BAC /" + weatherModel.getTempMax() + "\u00BAC");
 

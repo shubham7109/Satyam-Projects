@@ -25,7 +25,7 @@ public class WeatherController {
     public static void makeAPICall(Context context, String location, final WeatherCallback callback) {
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(context);
-        final JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, "https://api.openweathermap.org/data/2.5/weather?q="+location+"&appid="+ MainActivity.API_KEY, null, new Response.Listener<JSONObject>() {
+        final JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, "https://api.openweathermap.org/data/2.5/weather?q="+location+"&units=metric&appid="+ MainActivity.API_KEY, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try{
@@ -53,14 +53,14 @@ public class WeatherController {
     private static WeatherModel getWeatherModel(JSONObject response) throws JSONException {
         JSONObject responseObject = new JSONObject(String.valueOf(response));
         String locationName = responseObject.getString("name");
-        String iconID = responseObject.getJSONArray("weather").getJSONObject(0).getString("id");
-        int temperature = (int) ((responseObject.getJSONObject("main").getInt("temp")) - 273.15);
+        String iconID = responseObject.getJSONArray("weather").getJSONObject(0).getString("icon");
+        int temperature = responseObject.getJSONObject("main").getInt("temp");
         String weatherDescription = responseObject.getJSONArray("weather").getJSONObject(0).getString("description");
-        int feelsLike = (int) ((responseObject.getJSONObject("main").getDouble("feels_like")) - 273.25);
+        int feelsLike = (int) (responseObject.getJSONObject("main").getDouble("feels_like"));
         String windDescription = "The wind speed and direction in degree is " + Math.round((responseObject.getJSONObject("wind").getDouble("speed"))*3.6) + " (Km/h) from the " + directionConverter(responseObject.getJSONObject("wind").getInt("deg"));
         String humidity = responseObject.getJSONObject("main").getString("humidity");
-        int tempMin = (int) ((responseObject.getJSONObject("main").getInt("temp_min")) - 273.15);
-        int tempMax = (int) ((responseObject.getJSONObject("main").getInt("temp_max")) - 273.15);
+        int tempMin = (responseObject.getJSONObject("main").getInt("temp_min"));
+        int tempMax = (responseObject.getJSONObject("main").getInt("temp_max"));
         return new WeatherModel(locationName, iconID, temperature, feelsLike, weatherDescription, windDescription, humidity, tempMin, tempMax);
     }
 
