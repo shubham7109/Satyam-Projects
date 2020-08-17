@@ -2,11 +2,14 @@ package com.example.weathermobileapp;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -15,18 +18,44 @@ import android.widget.Toast;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+
 /**
  * This Activity will get the weather of any location!
  */
 public class ListActivity extends AppCompatActivity {
 
-    private WeatherModel weatherModel;
+    private ArrayList<WeatherModel> weatherModelArrayList = new ArrayList<>();
+    private WeatherAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
-        askUserLocation(ListActivity.this);
+
+        setUpRV();
+    }
+
+    /**
+     * Called when the FloatingActionButton is clicked
+     * Opens the AlertDialog to add a new Location
+     * @param view Don't need to use this
+     */
+    public void fabOnClick(View view) {
+        //TODO
+        Toast.makeText(this, "Make this open the alert dialog", Toast.LENGTH_SHORT).show();
+    }
+
+    /**
+     * Sets up the recycler view to be used
+     */
+    private void setUpRV() {
+        //TODO:
+        //Set it to be a LinearLayoutManager
+        //Create the adapter by using the instance variable
+        //Set the adapter to the RV
+        //Hint: https://stackoverflow.com/questions/40584424/simple-android-recyclerview-example
+        //More hints: https://developer.android.com/guide/topics/ui/layout/recyclerview
     }
 
 
@@ -34,8 +63,11 @@ public class ListActivity extends AppCompatActivity {
         WeatherController.makeAPICall(this, location , new WeatherController.WeatherCallback() {
             @Override
             public void onResponse(WeatherModel responseModel) {
-                weatherModel = responseModel;
-                setUpViews(weatherModel);
+                weatherModelArrayList.add(responseModel);
+                updateRecyclerView();
+                //We don't need this anymore
+                //setUpViews(weatherModel);
+
             }
 
             @Override
@@ -43,6 +75,13 @@ public class ListActivity extends AppCompatActivity {
                 Toast.makeText(ListActivity.this, "Error: " + errorMessage, Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    /**
+     * Updates the recycler view adapter when a new item is added.
+     */
+    private void updateRecyclerView() {
+        adapter.notifyDataSetChanged();
     }
 
     /**
@@ -94,5 +133,4 @@ public class ListActivity extends AppCompatActivity {
         picasso.setLoggingEnabled(true);
         picasso.load("https://openweathermap.org/img/wn/"+iconID+"@2x.png").error(R.drawable.baseline_filter_drama_24).into(imageView);
     }
-
 }
