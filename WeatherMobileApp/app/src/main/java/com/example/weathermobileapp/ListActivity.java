@@ -22,20 +22,11 @@ public class ListActivity extends AppCompatActivity {
 
     private WeatherModel weatherModel;
 
-    //TODO's in order
-    // 1. Replicate the layout in weather_list_item.xml
-    // 2. Display AlertDialog in askUserLocation()
-    // 3. Handle the error callback on setUpAPI()
-    // 4. Fill out setUpViews() based on your weather_list_item.xml resources.
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
         askUserLocation(ListActivity.this);
-
-
-
     }
 
 
@@ -45,13 +36,10 @@ public class ListActivity extends AppCompatActivity {
             public void onResponse(WeatherModel responseModel) {
                 weatherModel = responseModel;
                 setUpViews(weatherModel);
-
-
             }
 
             @Override
             public void onError(String errorMessage) {
-                //TODO: Display message if there is an error.
                 Toast.makeText(ListActivity.this, "Error: " + errorMessage, Toast.LENGTH_SHORT).show();
             }
         });
@@ -62,8 +50,6 @@ public class ListActivity extends AppCompatActivity {
      * Hint: https://alvinalexander.com/source-code/android-mockup-prototype-dialog-text-field/
      */
     private void askUserLocation(Context c) {
-        //TODO
-
         //Display alert dialog and then call setUpAPI() when user submit's location.
         final EditText taskEditText = new EditText(c);
         AlertDialog dialog = new AlertDialog.Builder(c)
@@ -87,7 +73,6 @@ public class ListActivity extends AppCompatActivity {
      */
     @SuppressLint("SetTextI18n")
     private void setUpViews(WeatherModel weatherModel) {
-        //TODO
         //Set up views from your custom layout.
         TextView location = findViewById(R.id.location);
         location.setText(weatherModel.getLocationName());

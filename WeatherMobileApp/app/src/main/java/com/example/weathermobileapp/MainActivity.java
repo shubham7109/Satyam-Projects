@@ -56,14 +56,12 @@ public class MainActivity extends AppCompatActivity {
         queue.add(jsonObjectRequest);
     }
 
-    //TODO: Step 1
     /**
      * Parse the JSONObject to a WeatherModel object
      * @param response Response from the API call
      * @return WeatherModel object with the weather values set.
      */
     private WeatherModel getWeatherModel(JSONObject response) throws JSONException {
-        //TODO
         JSONObject responseObject = new JSONObject(String.valueOf(response));
         String locationName = responseObject.getString("name");
         String iconID = responseObject.getJSONArray("weather").getJSONObject(0).getString("icon");
@@ -99,7 +97,6 @@ public class MainActivity extends AppCompatActivity {
         return direction;
     }
 
-    //TODO: Step 2
     /**
      * Set up the TextViews using the weatherModel object.
      * @param response JSON response from API call.
@@ -107,7 +104,6 @@ public class MainActivity extends AppCompatActivity {
     @SuppressLint("SetTextI18n")
     private void setUpViews(JSONObject response) throws JSONException {
         WeatherModel weatherModel = getWeatherModel(response);
-        //TODO: Use weatherModel to set up the TextViews...
         //Example 1:
         TextView location = findViewById(R.id.location);
         location.setText(weatherModel.getLocationName()); //Should be "Dubai"
