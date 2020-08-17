@@ -63,7 +63,7 @@ public class ListActivity extends AppCompatActivity {
         WeatherController.makeAPICall(this, location , new WeatherController.WeatherCallback() {
             @Override
             public void onResponse(WeatherModel responseModel) {
-                weatherModelArrayList.add(responseModel);
+                //TODO: Add the response to the weatherModelArrayList
                 updateRecyclerView();
                 //We don't need this anymore
                 //setUpViews(weatherModel);
